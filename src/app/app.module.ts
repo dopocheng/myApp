@@ -15,6 +15,7 @@ import { NotificationPage } from '../pages/notification/notification';
 import { MorePage } from '../pages/more/more';
 import { LoginPage } from '../pages/login/login';
 import { TabsPage } from '../pages/tabs/tabs';
+import { RegisterPage } from '../pages/register/register';
 
 
 
@@ -27,13 +28,16 @@ import { TabsPage } from '../pages/tabs/tabs';
     NotificationPage,
     MorePage,
     LoginPage,
-    TabsPage
+    TabsPage,
+    RegisterPage
   ],
   imports: [
     BrowserModule,
     HttpModule,//全局需要导入Http
     IonicStorageModule.forRoot(),//全局定义 storge的模块
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, {
+      backButtonText: '返回',
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -44,7 +48,8 @@ import { TabsPage } from '../pages/tabs/tabs';
     NotificationPage,
     MorePage,
     LoginPage,
-    TabsPage
+    TabsPage,
+    RegisterPage
   ],
   providers: [
     StatusBar,
