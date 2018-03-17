@@ -16,23 +16,23 @@
 <ion-content padding>
   <ion-list>
     <ion-item>
-      <ion-input type="text" placeholder="手机号码"></ion-input>
+      <ion-input type="text" [(ngModel)]="mobile" placeholder="手机号码"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input type="text" placeholder="用户昵称"></ion-input>
+      <ion-input type="text" [(ngModel)]="nickname" placeholder="用户昵称"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input type="password" placeholder="密码"></ion-input>
+      <ion-input type="password" [(ngModel)]="password" placeholder="密码"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input type="password" placeholder="确认密码"></ion-input>
+      <ion-input type="password" [(ngModel)]="confirmPassword" placeholder="确认密码"></ion-input>
     </ion-item>
   </ion-list>
 
   <div padding>
-    <button ion-button color="primary" block>注 册</button>
+    <button ion-button color="primary" block (click)=doRegister()>注 册</button>
   </div>
   <div text-center padding>
-    <button ion-button  outline>已有账号 ? 登录</button>
+    <button ion-button  outline (click)=gotoLogin()>已有账号 ? 登录</button>
   </div>
 </ion-content>

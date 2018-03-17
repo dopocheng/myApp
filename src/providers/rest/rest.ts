@@ -47,9 +47,23 @@ export class RestProvider {
    * @returns {Observable<string[]>} 
    * @memberof RestProvider
    */
+
   login(mobile,password): Observable<string[]>{
     return this.getUrlReturn(this.apiUrlLogin+ "?mobile=" + mobile + "&password=" + password);
   }
+  /**
+   * 注册请求
+   * 
+   * @param {any} mobile 
+   * @param {any} nickname 
+   * @param {any} password 
+   * @returns {Observable<string[]>} 
+   * @memberof RestProvider
+   */
+  register(mobile,nickname,password): Observable<string[]> {
+    return this.getUrlReturn(this.apiUrlRegister+ "?mobile=" + mobile + "&nickname=" + nickname +"&password=" +password)
+  }
+
   /**
    * 全局获取 HTTP 请求的方法
    * @dopocho
