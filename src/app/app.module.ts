@@ -16,6 +16,7 @@ import { MorePage } from '../pages/more/more';
 import { LoginPage } from '../pages/login/login';
 import { TabsPage } from '../pages/tabs/tabs';
 import { RegisterPage } from '../pages/register/register';
+import { UserPage } from '../pages/user/user';
 
 
 
@@ -29,7 +30,8 @@ import { RegisterPage } from '../pages/register/register';
     MorePage,
     LoginPage,
     TabsPage,
-    RegisterPage
+    RegisterPage,
+    UserPage
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,8 @@ import { RegisterPage } from '../pages/register/register';
     MorePage,
     LoginPage,
     TabsPage,
-    RegisterPage
+    RegisterPage,
+    UserPage
   ],
   providers: [
     StatusBar,

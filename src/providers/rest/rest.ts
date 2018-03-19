@@ -51,6 +51,18 @@ export class RestProvider {
   login(mobile,password): Observable<string[]>{
     return this.getUrlReturn(this.apiUrlLogin+ "?mobile=" + mobile + "&password=" + password);
   }
+
+  //获取用户基本信息
+  //报错userinfo not function ("?userId=")少了=
+  getUserInfo(userId): Observable<string[]> {
+    return this.getUrlReturn(this.apiUrlUserInfo +"?userId=" + userId);
+  } 
+
+  //请求保存api
+  updateNickName(userid,usernickname) {
+    return this.getUrlReturn(this.apiUrlUpdateNickName + "?userId=" + userid + "&nickname=" + usernickname);
+  }
+
   /**
    * 注册请求
    * 
@@ -63,6 +75,7 @@ export class RestProvider {
   register(mobile,nickname,password): Observable<string[]> {
     return this.getUrlReturn(this.apiUrlRegister+ "?mobile=" + mobile + "&nickname=" + nickname +"&password=" +password)
   }
+  
 
   /**
    * 全局获取 HTTP 请求的方法
