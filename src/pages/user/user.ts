@@ -4,6 +4,8 @@ import { NavController, NavParams, LoadingController, ToastController, ViewContr
 import { Storage } from '@ionic/storage';
 import { BaseUI } from '../../common/baseui';
 import { RestProvider } from '../../providers/rest/rest';
+import { HeadfacePage } from '../../pages/headface/headface';
+
 /**
  * Generated class for the UserPage page.
  *
@@ -81,5 +83,10 @@ export class UserPage extends BaseUI {
     console.error("1111");
     this.storage.remove('UserId');
     this.viewCtrl.dismiss();
+  }
+
+  //调到 headFace 页面
+  gotoHeadFace() {
+    this.navCtrl.push(HeadfacePage);
   }
 }

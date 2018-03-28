@@ -15,6 +15,7 @@ import { UserPage } from '../user/user';
  * Ionic pages and navigation.
  */
 
+ 
 @Component({
   selector: 'page-more',
   templateUrl: 'more.html',
@@ -26,6 +27,7 @@ export class MorePage extends BaseUI {
   headFace: string;
   userInfo: string[];
   nickName: string;
+  
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,

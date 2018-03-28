@@ -17,8 +17,14 @@ import { LoginPage } from '../pages/login/login';
 import { TabsPage } from '../pages/tabs/tabs';
 import { RegisterPage } from '../pages/register/register';
 import { UserPage } from '../pages/user/user';
+import { HeadfacePage } from '../pages/headface/headface';
+import { TrianglePage} from '../pages/triangle/triangle'
 
-
+//导入外部的四个组件
+import { File} from '@ionic-native/file';
+import { Transfer, TransferObject } from '@ionic-native/transfer';
+import { FilePath } from '@ionic-native/file-path';
+import { Camera } from '@ionic-native/camera';
 
 @NgModule({
   declarations: [
@@ -31,7 +37,9 @@ import { UserPage } from '../pages/user/user';
     LoginPage,
     TabsPage,
     RegisterPage,
-    UserPage
+    UserPage,
+    HeadfacePage,
+    TrianglePage
   ],
   imports: [
     BrowserModule,
@@ -52,13 +60,20 @@ import { UserPage } from '../pages/user/user';
     LoginPage,
     TabsPage,
     RegisterPage,
-    UserPage
+    UserPage,
+    HeadfacePage,
+    TrianglePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RestProvider//rest 的定义导入
+    RestProvider,//rest 的定义导入
+    File,  
+    Transfer, 
+    TransferObject, 
+    FilePath, 
+    Camera
   ]
 })
 export class AppModule {}

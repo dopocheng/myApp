@@ -1,0 +1,26 @@
+page-triangle {
+  .triangle1 {
+    width: 0;
+    height: 0;
+    border-top: 100px solid transparent;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 100px solid #ff0000;
+  }
+  .triangle2 {
+    width: 0;
+    height: 0;
+    border-top: 100px solid transparent; 
+    //border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 100px solid #ff0000;
+  }
+  .triangle3 {
+    width: 200px;
+    height: 200px;
+    border-top: 40px solid #000;
+    border-right: 40px solid #ff0000;
+    border-left: 40px solid #00ff00;
+    border-bottom: 40px solid #0000ff;
+  }
+}
