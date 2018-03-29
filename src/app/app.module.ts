@@ -18,7 +18,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { RegisterPage } from '../pages/register/register';
 import { UserPage } from '../pages/user/user';
 import { HeadfacePage } from '../pages/headface/headface';
-import { TrianglePage} from '../pages/triangle/triangle'
+import { TrianglePage} from '../pages/triangle/triangle';
+import { QuestionPage } from '../pages/question/question';
 
 //导入外部的四个组件
 import { File} from '@ionic-native/file';
@@ -39,7 +40,8 @@ import { Camera } from '@ionic-native/camera';
     RegisterPage,
     UserPage,
     HeadfacePage,
-    TrianglePage
+    TrianglePage,
+    QuestionPage
   ],
   imports: [
     BrowserModule,
@@ -62,7 +64,8 @@ import { Camera } from '@ionic-native/camera';
     RegisterPage,
     UserPage,
     HeadfacePage,
-    TrianglePage
+    TrianglePage,
+    QuestionPage
   ],
   providers: [
     StatusBar,

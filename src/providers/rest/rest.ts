@@ -59,9 +59,13 @@ export class RestProvider {
   } 
 
   //请求保存api
-  updateNickName(userid,usernickname) {
+  updateNickName(userid,usernickname): Observable<string[]> {
     return this.getUrlReturn(this.apiUrlUpdateNickName + "?userId=" + userid + "&nickname=" + usernickname);
   }
+ //保存问题
+ saveQuestion(userId,title,content):Observable<string[]> {
+  return this.getUrlReturn(this.apiUrlQuestionSave + "?userId=" +userId + "&title=" + title + "&content=" + content);
+ }
 
   /**
    * 注册请求
