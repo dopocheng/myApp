@@ -20,6 +20,7 @@ import { UserPage } from '../pages/user/user';
 import { HeadfacePage } from '../pages/headface/headface';
 import { TrianglePage} from '../pages/triangle/triangle';
 import { QuestionPage } from '../pages/question/question';
+import { DetailsPage } from '../pages/details/details'
 
 //导入外部的四个组件
 import { File} from '@ionic-native/file';
@@ -41,7 +42,8 @@ import { Camera } from '@ionic-native/camera';
     UserPage,
     HeadfacePage,
     TrianglePage,
-    QuestionPage
+    QuestionPage,
+    DetailsPage
   ],
   imports: [
     BrowserModule,
@@ -65,7 +67,8 @@ import { Camera } from '@ionic-native/camera';
     UserPage,
     HeadfacePage,
     TrianglePage,
-    QuestionPage
+    QuestionPage,
+    DetailsPage
   ],
   providers: [
     StatusBar,
