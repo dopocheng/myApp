@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ToastController, ModalController} from 'ionic-angular';
 
 import { BaseUI } from '../../common/baseui';
 import { RestProvider } from '../../providers/rest/rest';
-import { Storage } from '@ionic/storage'
+import { Storage } from '@ionic/storage';
+import { AnswerPage } from '../answer/answer'
 
 /**
  * Generated class for the DetailsPage page.
@@ -32,7 +33,8 @@ export class DetailsPage extends BaseUI {
     public rest: RestProvider,
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
-    public storage: Storage
+    public storage: Storage,
+    public modalCtrl: ModalController
   ) {
     super();
   }
@@ -52,6 +54,7 @@ export class DetailsPage extends BaseUI {
           this.rest.getQuestionWithUser(id, val)
             .subscribe(
               q => {
+                loading.dismiss();
                 this.question = q;
                 //对问题的回答
                 this.answers = q["Answers"];
@@ -80,5 +83,15 @@ export class DetailsPage extends BaseUI {
         },
         error => this.errorMessage = <any>error);
   }
-
+  //弹出回答界面
+  showAnswerPage(){
+    // console.log("gotoAnswer");
+    //modal 传参 要回答问题的 Id,还有之前的 navigation 导航栏传参 
+    let modal = this.modalCtrl.create(AnswerPage, {"id" : this.id});
+    //页面关掉后的回调
+    modal.onDidDismiss(() => {
+      this.loadQuestion(this.id);
+    })
+    modal.present();
+  }
 }

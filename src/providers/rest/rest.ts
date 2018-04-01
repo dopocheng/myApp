@@ -104,6 +104,19 @@ export class RestProvider {
   saveFavourte(questionId, userId): Observable<string[]> {
     return this.getUrlReturn(this.apiUrlSaveFavourite + "?questionid=" + questionId + "&userid=" + userId);
   }
+
+  /**
+   * 后台请求;保存回答内容
+   * 
+   * @param {any} userId 当前用户
+   * @param {any} questionId 提问用户
+   * @param {any} content 回答内容
+   * @returns {Observable<string[]>} 
+   * @memberof RestProvider
+   */
+  answer(userId,questionId,content): Observable<string[]> {
+    return this.getUrlReturn(this.apiUrlAnswer +"?userid=" + userId + "&questionid=" + questionId + "&content=" + content);
+  }
   /**
    * 注册请求
    * 

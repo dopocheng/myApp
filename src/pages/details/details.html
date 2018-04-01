@@ -12,7 +12,7 @@
       {{question?.Content}}
       <p>{{question?.LikeCount}}&nbsp;个关注&nbsp;&nbsp;&nbsp;&nbsp;{{question?.CommentCount}}&nbsp;个回答</p>
       <!-- 灰掉自己提问的回答技巧 [disabled]="isMyQuestion" -->
-      <button ion-button small [disabled]="isMyQuestion">
+      <button ion-button small [disabled]="isMyQuestion" (click)="showAnswerPage()">
         <ion-icon name="add"></ion-icon>&nbsp;回答</button>&nbsp;&nbsp;
       <button ion-button small color="secondary" (click)="saveFavourte()">
         &nbsp;{{isFavourite ? '取消关注' : '关注'}}</button>
