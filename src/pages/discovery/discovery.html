@@ -1,18 +1,40 @@
-<!--
-  Generated template for the DiscoveryPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>discovery</ion-title>
+    <ion-title style="text-align:center">发现</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
-<ion-content padding>
-
+<ion-content>
+  <!-- 下拉刷新事件 doRefresh($event) -->
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content 
+    pullingIoc="arrow-dropdown"
+    pullingText="下拉刷新"
+    refreshingSpinner="circles"
+    refreshingText="刷新中。。。">
+    </ion-refresher-content>
+  </ion-refresher>
+<!-- 循环输出所有问题 "let q of questions" -->
+<ion-card *ngFor="let q of questions" (click)="gotoDetails(q.IdentityId)">
+  <ion-item class="ion-item">
+    <ion-avatar item-start>
+      <img src="{{q.HeadFace}}">
+    </ion-avatar>
+    <p>{{q.UserNickName}}回答了该问题
+      <ion-icon class="more_button" name="more"></ion-icon>
+    </p>
+  </ion-item>
+  <h2>{{q.ContentTitle}}</h2>
+  <ion-card-content>
+    <p>{{q.ContentSummary}}</p>
+  </ion-card-content>
+  <ion-row>
+    <ion-col col-8 center text-left>
+      <ion-note>
+        {{q.LikeCount}}&nbsp;赞同&nbsp;&nbsp;.&nbsp;&nbsp;{{q.CommentCount}}&nbsp;评论&nbsp;&nbsp;.&nbsp;&nbsp;关注问题
+      </ion-note>
+    </ion-col>
+    <ion-col col-4></ion-col>
+  </ion-row>
+</ion-card>
 </ion-content>
