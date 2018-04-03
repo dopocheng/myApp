@@ -1,0 +1,15 @@
+<!-- Generated template for the EmojipickerComponent component -->
+<div class="emoji-picker">
+  <div class="emoji-items">
+    <!-- 换灯片样式 -->
+    <ion-slides pager>
+      <!-- 从 emojiArray 数组中循环出 13 组并放在 items 中保存 -->
+      <ion-slide *ngFor="let items of emojiArray">
+        <!-- 将 items 中 13 个数组放到 item 循环出来 -->
+        <span class="emoji-item" (click)="setValue(item)" *ngFor="let item of items">
+          {{item}}
+        </span>
+      </ion-slide>
+    </ion-slides>
+  </div>
+</div>

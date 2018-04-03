@@ -5,6 +5,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestProvider } from '../providers/rest/rest';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http'
 import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
@@ -22,7 +23,11 @@ import { TrianglePage} from '../pages/triangle/triangle';
 import { QuestionPage } from '../pages/question/question';
 import { DetailsPage } from '../pages/details/details';
 import { AnswerPage } from '../pages/answer/answer'
-
+import { ChatdetailsPage } from '../pages/chatdetails/chatdetails'
+//导入自定义表情包
+import { EmojiProvider} from '../providers/emoji/emoji';
+  /*                  为嘛这个路由要导入             */  
+import { ComponentsModule } from '../components/components.module'
 //导入外部的四个组件
 import { File} from '@ionic-native/file';
 import { Transfer, TransferObject } from '@ionic-native/transfer';
@@ -45,15 +50,18 @@ import { Camera } from '@ionic-native/camera';
     TrianglePage,
     QuestionPage,
     DetailsPage,
-    AnswerPage
+    AnswerPage,
+    ChatdetailsPage
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     HttpModule,//全局需要导入Http
-    IonicStorageModule.forRoot(),//全局定义 storge的模块
     IonicModule.forRoot(MyApp, {
       backButtonText: '返回',
-    })
+    }),
+    ComponentsModule,
+    IonicStorageModule.forRoot(),//全局定义 storge的模块
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -71,7 +79,8 @@ import { Camera } from '@ionic-native/camera';
     TrianglePage,
     QuestionPage,
     DetailsPage,
-    AnswerPage
+    AnswerPage,
+    ChatdetailsPage
   ],
   providers: [
     StatusBar,
@@ -82,7 +91,8 @@ import { Camera } from '@ionic-native/camera';
     Transfer, 
     TransferObject, 
     FilePath, 
-    Camera
+    Camera,
+    EmojiProvider
   ]
 })
 export class AppModule {}
