@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { ChatdetailsPage } from '../chatdetails/chatdetails'
+
 /**
  * Generated class for the ChatPage page.
  *
@@ -8,14 +10,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-chat',
   templateUrl: 'chat.html',
 })
 export class ChatPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  userinfo: Object;
+  ChatdetailsPage: any;
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams
+  ) {
+    //你也可以从你的 API 接口或者其他的方法实现用户列表的定义
+    this.userinfo = {
+      userid: '123321',
+      username: '慕女神'
+    }
+    // 跳转到 ChatdetailsPage 页面
+    this.ChatdetailsPage = ChatdetailsPage;
   }
 
   ionViewDidLoad() {
