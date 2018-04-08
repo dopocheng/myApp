@@ -106,9 +106,9 @@ export class ChatdetailsPage extends BaseUI {
           this.messageList[index].status = 'success';
         }
       })
-      
+
       // 关闭 emoji 选择窗口
-      this.isOpenEmojiPicker = false;
+      this.switchEmojiPicker()
   }
 
   ionViewWillLeave() {
