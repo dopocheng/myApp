@@ -5,16 +5,24 @@
 </ion-header>
 <ion-content>
   <div class="message-wrap">
-    <div class="message right">
-      <img src="" class="user-img">
+    <!-- 样式动态控制;当前用户和聊天对象文本展示的样式 -->
+    <div class="message" 
+      *ngFor="let m of messageList" 
+      [class.left]="m.userId === chatUserId"
+      [class.right]="m.userId === userId"
+    >
+      <img [src]="m.userImgUrl" class="user-img">
+      <!-- 模拟发送消息等待; 档状态为 pending -->
+      <ion-spinner name="dots" *ngIf="m.status ==='pending'"></ion-spinner>
       <!-- 又将 class 写错 clss -->
       <div class="msg-detail">
         <div class="msg-info">
-          <!-- Non-Breaking Space 不间断空格 -->
-          <p>Parry&nbsp;1分钟前</p>
+          <!-- Non-Breaking Space 不间断空格 pipes用法-->
+          <!-- 时间转化  relativetime -->
+          <p>{{m.userName}}&nbsp;{{m.time | relativetime}}</p>
         </div>
         <div class="msg-content">
-          <p class="line-breaker">消息内容</p>
+          <p class="line-breaker">{{m.message}}</p>
         </div>
       </div>
     </div>
@@ -31,15 +39,22 @@
         </button>
       </ion-col>
       <ion-col col-8>
-        <ion-textarea placeholder="输入内容"> </ion-textarea>
+          <!-- #chatInput 后台直接拿到 DOM节点 -->
+        <ion-textarea 
+          #chatInput 
+          [(ngModel)]="editorMessage" 
+          (keyup.enter)="sendMessage()" 
+          (focus)="focus()"
+          placeholder="输入内容">
+        </ion-textarea>
       </ion-col>
       <ion-col col-2>
-        <button ion-button clear ion-only item-right>
+        <button ion-button clear ion-only item-right (click)="sendMessage()">
           <ion-icon name="send"></ion-icon>
         </button>
       </ion-col>
     </ion-row>
   </ion-grid>
   <!-- angular 通过 *ngIf 让控件是否显示 -->
-  <emojipicker *ngIf="isOpenEmojiPicker"></emojipicker>
+  <emojipicker *ngIf="isOpenEmojiPicker" [(ngModel)]="editorMessage"></emojipicker>
 </ion-footer>

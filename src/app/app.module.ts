@@ -4,6 +4,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestProvider } from '../providers/rest/rest';
+// import { Http } from '@angular/http'
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http'
 import { IonicStorageModule } from '@ionic/storage';
@@ -24,6 +25,7 @@ import { QuestionPage } from '../pages/question/question';
 import { DetailsPage } from '../pages/details/details';
 import { AnswerPage } from '../pages/answer/answer'
 import { ChatdetailsPage } from '../pages/chatdetails/chatdetails'
+import { RelativetimePipe } from '../pipes/relativetime/relativetime'
 //导入自定义表情包
 import { EmojiProvider} from '../providers/emoji/emoji';
   /*                  为嘛这个路由要导入             */  
@@ -33,6 +35,7 @@ import { File} from '@ionic-native/file';
 import { Transfer, TransferObject } from '@ionic-native/transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
+import { ChatserviceProvider } from '../providers/chatservice/chatservice';
 
 @NgModule({
   declarations: [
@@ -51,12 +54,14 @@ import { Camera } from '@ionic-native/camera';
     QuestionPage,
     DetailsPage,
     AnswerPage,
-    ChatdetailsPage
+    ChatdetailsPage,
+    RelativetimePipe
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    HttpModule,//全局需要导入Http
+    HttpClientModule, 
+    HttpModule,
+    // Http,//全局需要导入Http
     IonicModule.forRoot(MyApp, {
       backButtonText: '返回',
     }),
@@ -92,7 +97,8 @@ import { Camera } from '@ionic-native/camera';
     TransferObject, 
     FilePath, 
     Camera,
-    EmojiProvider
+    EmojiProvider,
+    ChatserviceProvider
   ]
 })
 export class AppModule {}
