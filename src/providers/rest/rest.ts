@@ -141,6 +141,29 @@ export class RestProvider {
 
 
   /**
+   * 获取消息提醒
+   * 
+   * @param {any} userId 
+   * @returns {Observable<string[]>} 
+   * @memberof RestProvider
+   */
+  getNotifications(userId): Observable<string[]> {
+    return this.getUrlReturn(this.apiUrlUserNotifications + "?userid=" + userId);
+  }
+
+  /**
+   * 获取用户的相关问题列表
+   * 
+   * @param {any} userId 
+   * @param {any} type 
+   * @returns {Observable<string[]>} 
+   * @memberof RestProvider
+   */
+  getUserQuestionList(userId, type): Observable<string[]> {
+    return this.getUrlReturn(this.apiGetUserQuestionList + "?userid=" + userId + "&type=" + type);
+  }
+
+  /**
    * 全局获取 HTTP 请求的方法
    * @dopocho
    * @private 私有
