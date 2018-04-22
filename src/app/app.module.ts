@@ -13,7 +13,6 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { DiscoveryPage } from '../pages/discovery/discovery';
 import { ChatPage } from '../pages/chat/chat';
-import { NotificationPage } from '../pages/notification/notification';
 import { MorePage } from '../pages/more/more';
 import { LoginPage } from '../pages/login/login';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -23,18 +22,25 @@ import { HeadfacePage } from '../pages/headface/headface';
 import { TrianglePage} from '../pages/triangle/triangle';
 import { QuestionPage } from '../pages/question/question';
 import { DetailsPage } from '../pages/details/details';
-import { AnswerPage } from '../pages/answer/answer'
-import { ChatdetailsPage } from '../pages/chatdetails/chatdetails'
-import { RelativetimePipe } from '../pipes/relativetime/relativetime'
+import { AnswerPage } from '../pages/answer/answer';
+import { ChatdetailsPage } from '../pages/chatdetails/chatdetails';
+import { NotificationPage } from '../pages/notification/notification';
+import { UserdatalistPage } from '../pages/userdatalist/userdatalist';
+import { ScanPage } from '../pages/scan/scan'
+import { VersionsPage } from '../pages/versions/versions';
+import { RelativetimePipe } from '../pipes/relativetime/relativetime';
 //导入自定义表情包
 import { EmojiProvider} from '../providers/emoji/emoji';
+import { SettingProvider } from '../providers/setting/setting';
   /*                  为嘛这个路由要导入             */  
-import { ComponentsModule } from '../components/components.module'
+import { ComponentsModule } from '../components/components.module';
 //导入外部的四个组件
 import { File} from '@ionic-native/file';
 import { Transfer, TransferObject } from '@ionic-native/transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
+import { QRScanner } from '@ionic-native/qr-scanner';
+import { AppVersion } from '@ionic-native/app-version';
 import { ChatserviceProvider } from '../providers/chatservice/chatservice';
 
 @NgModule({
@@ -55,7 +61,10 @@ import { ChatserviceProvider } from '../providers/chatservice/chatservice';
     DetailsPage,
     AnswerPage,
     ChatdetailsPage,
-    RelativetimePipe
+    UserdatalistPage,
+    RelativetimePipe,
+    ScanPage,
+    VersionsPage
   ],
   imports: [
     BrowserModule,
@@ -85,7 +94,10 @@ import { ChatserviceProvider } from '../providers/chatservice/chatservice';
     QuestionPage,
     DetailsPage,
     AnswerPage,
-    ChatdetailsPage
+    UserdatalistPage,
+    ChatdetailsPage,
+    ScanPage,
+    VersionsPage
   ],
   providers: [
     StatusBar,
@@ -97,8 +109,11 @@ import { ChatserviceProvider } from '../providers/chatservice/chatservice';
     TransferObject, 
     FilePath, 
     Camera,
+    QRScanner,
     EmojiProvider,
-    ChatserviceProvider
+    ChatserviceProvider,
+    SettingProvider,
+    AppVersion
   ]
 })
 export class AppModule {}

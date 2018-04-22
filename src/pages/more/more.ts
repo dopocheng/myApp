@@ -2,18 +2,15 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
 
 import { LoginPage } from '../login/login';
+import { VersionsPage } from '../versions/versions';
 import { Storage } from '@ionic/storage';
+import { UserPage } from '../user/user';
+import { UserdatalistPage } from '../userdatalist/userdatalist';
+import { ScanPage } from '../../pages/scan/scan'
+
 import { BaseUI } from '../../common/baseui';
 import { RestProvider } from '../../providers/rest/rest';
-
-import { UserPage } from '../user/user';
-
-/**
- * Generated class for the MorePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { SettingProvider } from '../../providers/setting/setting';
 
  
 @Component({
@@ -22,6 +19,7 @@ import { UserPage } from '../user/user';
 })
 export class MorePage extends BaseUI {
 
+  selectedTheme: string;
   public notLogin: boolean = true;
   public logined: boolean = false;
   headFace: string;
@@ -35,8 +33,13 @@ export class MorePage extends BaseUI {
     public storage: Storage,
     public loadCtrl: LoadingController,
     public rest: RestProvider,
+    private setting: SettingProvider
   ) {
     super();
+    // 获得用户当前的主题
+    this.setting.getActieTheme().subscribe(val => {
+      this.selectedTheme = val;
+    })
   }
 
   showModal() {
@@ -46,12 +49,13 @@ export class MorePage extends BaseUI {
     });
     loginModal.present();
   }
-
-  ionViewDidEnter() {
+  // ionViewDidEnter每次进入都会加载； ionViewDidLoad 只加载一次
+  ionViewDidLoad() {
     //console.error(1);
     this.loadUsrePage();
   }
 
+  // 获取当前用户的信息
   loadUsrePage() {
     //console.error(2);
     this.storage.get('UserId').then((val) => {
@@ -74,9 +78,40 @@ export class MorePage extends BaseUI {
       }
     });
   }
+
+  // 判断点击的是哪个 click 事件
+  gotoDataList(type){
+    this.navCtrl.push(UserdatalistPage, {"dataType":type})
+  }
   //跳转到user页面
   gotoUserPage() {
     this.navCtrl.push(UserPage);
+  }
+
+  /**
+   * 跳转到扫描二维码的页面，加上 animate= false 的参数是为了
+   * 相机能狗仔整个屏幕中显示，如果不加，相机出不来
+   * animate 的参数默认为 true 
+   * 
+   * @memberof MorePage
+   */
+  gotoScanQRCode() {
+    this.navCtrl.push(ScanPage, null, {"animate": false});
+  }
+
+  // 跳转版本信息页面
+  gotoVersions(){
+    this.navCtrl.push(VersionsPage);
+  }
+
+  // 判断并修改用户当前的主题
+  toggleChangeTheme(){
+    if(this.selectedTheme === 'dark-theme'){
+      this.setting.setActiveTheme('light-theme');
+    }else{
+      this.setting.setActiveTheme('dark-theme');
+    }
+
   }
 
 }

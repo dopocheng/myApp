@@ -1,0 +1,30 @@
+page-scan {
+  html,
+  body,
+  ion-app,
+  ion-content,
+  ion-page,
+  .app-root,
+  .nav-decor {
+    background-color: transparent !important;
+    font-size: 16px;
+  }
+  .line {
+    position: absolute;
+    z-index: 999999;
+    top: 15px;
+    height: 2px;
+    width: 100%;
+    background-color: #009900;
+    animation: scan 1s infinite alternate;
+    -webkit-animation: scan 1s infinite alternate;
+  } // 关键帧
+  @keyframes scan {
+    from {
+      top: 20%;
+    }
+    to {
+      top: 80%;
+    }
+  }
+}
