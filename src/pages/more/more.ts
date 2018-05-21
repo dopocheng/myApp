@@ -49,8 +49,8 @@ export class MorePage extends BaseUI {
     });
     loginModal.present();
   }
-  // ionViewDidEnter每次进入都会加载； ionViewDidLoad 只加载一次
-  ionViewDidLoad() {
+  // ionViewDidEnter 每次进入都会加载； ionViewDidLoad 只加载一次
+  ionViewDidEnter() {
     //console.error(1);
     this.loadUsrePage();
   }

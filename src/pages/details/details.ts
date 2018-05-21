@@ -42,6 +42,7 @@ export class DetailsPage extends BaseUI {
   ionViewDidLoad() {
     //获得页面传过来的参数
     this.id = this.navParams.get('id');
+    // console.error("ssssssssss= " + this.id);
     this.loadQuestion(this.id);
   }
   //加载问题内容和回答的内容
@@ -56,6 +57,7 @@ export class DetailsPage extends BaseUI {
               q => {
                 loading.dismiss();
                 this.question = q;
+                // console.error("ssssssssss" + q["IdentityId"]);
                 //对问题的回答
                 this.answers = q["Answers"];
                 this.isFavourite = q["IsFavourite"];

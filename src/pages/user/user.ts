@@ -80,7 +80,7 @@ export class UserPage extends BaseUI {
 
   //注销
   unload() {
-    console.error("1111");
+    
     this.storage.remove('UserId');
     this.viewCtrl.dismiss();
   }

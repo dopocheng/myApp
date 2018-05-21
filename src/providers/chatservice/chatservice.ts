@@ -22,7 +22,6 @@ export class ChatMessage {
 }
 //用户信息属性
 export class UserInfo {
-  ;
   userId: string;
   userName: string;
   userImgUrl: string;

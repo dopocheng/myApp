@@ -39,7 +39,7 @@ export class ChatdetailsPage extends BaseUI {
     this.chatUserId = navParams.get('userid');
   }
   //页面进入时就要去请求，(若使用 ionViewDidLoad 页面闪一下,现在用的是 mock 可能效果不明显)
-  ionViewDidEnter() {
+  ionViewWillEnter() {
     //获取用户信息
     this.storage.get('UserId').then((val) => {
       if (val != null) {
@@ -107,8 +107,10 @@ export class ChatdetailsPage extends BaseUI {
         }
       })
 
-      // 关闭 emoji 选择窗口
-      this.switchEmojiPicker()
+      // 图片发送后关闭 emoji 选择窗口
+      if (this.isOpenEmojiPicker) {
+        this.isOpenEmojiPicker = false;
+      }
   }
 
   ionViewWillLeave() {
@@ -125,6 +127,7 @@ export class ChatdetailsPage extends BaseUI {
 
   /**
    * 调用 service 里面的方法进行属性的赋值
+   * 获得最初的mock数据
    * 
    * @returns 
    * @memberof ChatdetailsPage
@@ -132,7 +135,9 @@ export class ChatdetailsPage extends BaseUI {
   getMessage() {
     return this.chatService.getMessageList()
       .then(res => {
+        // 将mock过来的数据放到messageList给前端使用
         this.messageList = res;
+        // 查看mock过来的数据
         // console.log("getMessage=="+this.messageList)
         for (var i = 0; i < (this.messageList.length); i++) {
           // console.error(this.messageList[i].userId);
