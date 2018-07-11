@@ -64,7 +64,7 @@ export class ChatdetailsPage extends BaseUI {
     this.event.subscribe('chat.received', (msg, time) => {
       // mockNewMessage()模拟自动回复的数据
       this.messageList.push(msg);
-      this.scrollToBottom();
+      
     })
   }
 
