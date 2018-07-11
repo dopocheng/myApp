@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, LoadingController, Content, TextInput, Events} from 'ionic-angular';
+import { NavController, NavParams, LoadingController, Content, TextInput, Events } from 'ionic-angular';
 
 import { ChatserviceProvider, ChatMessage } from '../../providers/chatservice/chatservice';
 import { Storage } from '@ionic/storage';
@@ -61,7 +61,7 @@ export class ChatdetailsPage extends BaseUI {
     })
 
     //刚进入页面就听取发布的消息即 订阅
-    this.event.subscribe('chat.received',(msg,time) => {
+    this.event.subscribe('chat.received', (msg, time) => {
       // mockNewMessage()模拟自动回复的数据
       this.messageList.push(msg);
       this.scrollToBottom();
@@ -74,7 +74,7 @@ export class ChatdetailsPage extends BaseUI {
       console.error("sendMessage");
       return;
     }
-    
+
     // 按时间给要发送的消息设置一个 id 
     const id = Date.now().toString();
     let messageSend: ChatMessage = {
@@ -97,7 +97,7 @@ export class ChatdetailsPage extends BaseUI {
     if (!this.isOpenEmojiPicker) {
       this.messageInput.setFocus();
     }
-    
+
     //发送消息并改变消息的状态
     this.chatService.sendMessage(messageSend)
       .then(() => {
@@ -107,17 +107,17 @@ export class ChatdetailsPage extends BaseUI {
         }
       })
 
-      // 图片发送后关闭 emoji 选择窗口
-      if (this.isOpenEmojiPicker) {
-        this.isOpenEmojiPicker = false;
-      }
+    // 图片发送后关闭 emoji 选择窗口
+    if (this.isOpenEmojiPicker) {
+      this.isOpenEmojiPicker = false;
+    }
   }
 
   ionViewWillLeave() {
     // 进行订阅的取消
     this.event.unsubscribe('chat.received');
   }
- 
+
   // 焦点
   focus() {
     this.isOpenEmojiPicker = false;
